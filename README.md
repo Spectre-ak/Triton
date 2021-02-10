@@ -13,3 +13,7 @@
 5. NASA Image APIs content in the feed page.
 
 ##### The web app will be available on Azure and cpanel with separate databases.
+
+#### Different Sections of application and their names.
+1. Feed/home page aka SpaceShuttel is here.
+2. 
