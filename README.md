@@ -1,5 +1,7 @@
 # Triton
 
+#### The beta version is deployed at https://sqltry3.azurewebsites.net/uploads/loginsignup/login.php
+
 #### A social media network for space enthusiast.
 #### The web app is written in PHP and currently uses Azure SQL Database.
 
