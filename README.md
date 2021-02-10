@@ -11,3 +11,5 @@
 3. Real time messaging support.
 4. Uploading posts and Giving likes.
 5. NASA Image APIs content in the feed page.
+
+##### The web app will available on two locations Azure and cpanel.
