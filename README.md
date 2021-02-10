@@ -12,4 +12,4 @@
 4. Uploading posts and Giving likes.
 5. NASA Image APIs content in the feed page.
 
-##### The web app will available on two locations Azure and cpanel.
+##### The web app will be available on Azure and cpannel and both will have different databases.
