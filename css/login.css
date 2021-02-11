@@ -1,0 +1,291 @@
+body{
+    padding: 1%;
+    margin: 2px;
+    color: white;
+    background-color: #131316;
+    background-image: url("");
+}
+
+.h1{
+    padding: 2%;
+    margin: 2px;
+    padding-top: 20%;
+    text-align: center;
+}
+
+#img{
+    max-width: 700px;
+    min-width: 100px;
+    width: 100%;
+    border-radius: 20px;
+    -webkit-box-reflect: below 8px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(40%, transparent), to(rgba(255, 255, 255, 0.4)));
+    
+}
+
+.logo{
+    width: 100%;
+    margin-bottom: 4%;
+    -webkit-box-reflect: below 1px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(40%, transparent), to(rgba(255, 255, 255, 0.21)));
+    border-radius: 20px;
+}
+
+.left{
+    width: 47%;
+    float: left;
+    padding: 2px;
+    margin: 2px;
+    text-align: center;   
+    bottom: 110%;
+}
+
+.right{
+    width: 47%;
+    float: left;
+    padding: 2px;
+    padding-top: 10%;
+    margin: 2px;
+    text-align: center;
+
+}
+
+#border{
+    
+    
+    margin: 5px;
+}
+
+
+.input{
+
+    color: white;
+    background-color: #131316;
+    text-align: center;
+    width: 69%;
+    font-size: small;
+    padding: 1% 4% 1%;
+    margin: 2px;
+    border: 2px solid #0c82e2;
+    border-radius: 20px;
+
+}
+
+
+.input:hover,.input:focus{
+    background-color: #131316;
+    box-shadow: 3px 3px 20px #11B2E8;
+
+
+}
+
+#forgetPass{
+  color: white;
+}
+#forgetPass:hover{
+   color: #0c82e2;
+
+  
+
+}
+
+#login{
+    color: white;
+    background-color: #131316;
+
+    width: 40%;
+
+    /*padding: 1.5% 2% 1.5%;*/
+    margin: 9px;
+    border: 2px solid #0c82e2;
+    border-radius: 25px;
+    font-size: medium;
+
+}
+
+#login:hover{
+    background-color: #0c82e2;
+}
+
+.signup{
+    color: white;
+    background-color: #0c82e2;
+    width: 40%;
+    /*padding: 1.5% 2% 1.5%;*/
+   /* margin: 1px;*/
+    border-radius: 25px;
+    font-size: medium;
+    border: 2px solid #0c82e2;
+
+}
+
+.signup:hover{
+    background-color: #0c82e2;
+    opacity: 0.9;
+}
+
+.s_input{
+    color: white;
+    background-color: #131316;
+    width: 30%;
+    padding: 1.5% 4% 1.5%;
+    margin: 5px;
+    border: 2px solid #0c82e2;
+    border-radius: 25px;
+    font-size: medium;
+    display: block;
+}
+
+
+::placeholder{
+    color: white;
+    font-size:90%;
+    text-align: center;
+}
+
+
+
+
+
+
+
+  
+
+
+.s_input {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #343444;
+  text-align: center;
+}
+
+.s_input:focus, .s_input:focus {   
+  outline: none;
+}
+
+
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Moda
+ (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding-top: 50px;
+  text-align: center;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 2px solid #0c82e2;
+  border-radius: 20px;
+  background-color: rgba(0,0,0, 0.2);
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .left{
+      width: 99%;
+  }
+  .right{
+      width: 99%;
+      padding-top: 5%;
+  }
+  .input{
+      width: 85%;
+  }
+
+  .logo{
+    width: 95%;
+  }
+  #login{
+    width: 60%;
+  }
+  .signup{
+    width: 60%;
+  }
+  .cancelbtn, .signupbtn {
+    width: 100%;
+ }
+}
+
+
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+  opacity: 0.0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0b0b0c00;; 
+   border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6c757d; 
+   border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
