@@ -1,127 +1,100 @@
 <?php
-   $usernameGlobal="";
-   
-   
-   if(isset($_POST['logout'])){
-       setcookie('status',"",time() + (1),'/','sqltry3.azurewebsites.net');
-       setcookie('statusUsername',"",time() + (1),'/','sqltry3.azurewebsites.net');
-      // setcookie('statusUserTable',"",time() + (1),'/','sqltry3.azurewebsites.net');
-           
-       echo("
+$usernameGlobal = "";
+if (isset($_POST['logout'])) {
+    setcookie('status', "", time() + (1), '/', 'sqltry3.azurewebsites.net');
+    setcookie('statusUsername', "", time() + (1), '/', 'sqltry3.azurewebsites.net');
+    // setcookie('statusUserTable',"",time() + (1),'/','sqltry3.azurewebsites.net');
+    echo ("
            <script>
            
            </script>");
-     }
-   
-   
-     if($_COOKIE['status']=='1'){
-         echo("
+}
+if ($_COOKIE['status'] == '1') {
+    echo ("
              <script>
              window.location.href = 'https://sqltry3.azurewebsites.net/uploads/loginsignup/profile.php';
              </script>");
-       }
-       else{
-   
-       }
-   
-     function displaySignup(){
-       $username=$_POST['username'];
-       $email=$_POST['email'];
-       $password=$_POST['password'];
-       $passwordRepeat=$_POST['password-repeat'];
-       $name=$_POST['name'];
-       if($password!=$passwordRepeat){
-         echo "password mismatch try again";exit();
-       }
-      
-    
-       $serverName = "xxxxxxxxxxxxxxxxxxxxxxx";
-       $connectionOptions = array("Database" => "xxxxxxxxxxxxxxxx", 
-           "Uid" => "xxxxxxxxxxxxxxxxx", 
-           "PWD" => "xxxxxxxxxxxxxxx");
-       $conn = sqlsrv_connect($serverName, $connectionOptions) or die( print_r( sqlsrv_errors(), true));
-       $tsql= "SELECT * FROM dbo.allUsersInfo";
-       $getResults= sqlsrv_query($conn, $tsql);
-   
-       if ($getResults == FALSE){
-          echo ("<script>alert('Some Error occured');</script>");
-          return "exit";
-       }
-       //checking if the credentials are valid or not
-       while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)){
-          if($row['username']==$username){
-               return "Username taken";
-          }
-          else if($row['email']==$email){
-               return "Email is in use";
-          }
-       }
-       //main database enrty
-       $tsql= "INSERT INTO dbo.allUsersInfo (username,orignalName,email,passkey,tableName,followers,followings,likedPosts,totalComments,userPosts,profilePhoto,coverPhoto,location)
+} else {
+}
+function displaySignup() {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $passwordRepeat = $_POST['password-repeat'];
+    $name = $_POST['name'];
+    if ($password != $passwordRepeat) {
+        echo "password mismatch try again";
+        exit();
+    }
+    $serverName = "xxxxxxxxxxxxxxxxxxxxxxx";
+    $connectionOptions = array("Database" => "xxxxxxxxxxxxxxxx", "Uid" => "xxxxxxxxxxxxxxxxx", "PWD" => "xxxxxxxxxxxxxxx");
+    $conn = sqlsrv_connect($serverName, $connectionOptions) or die(print_r(sqlsrv_errors(), true));
+    $tsql = "SELECT * FROM dbo.allUsersInfo";
+    $getResults = sqlsrv_query($conn, $tsql);
+    if ($getResults == FALSE) {
+        echo ("<script>alert('Some Error occured');</script>");
+        return "exit";
+    }
+    //checking if the credentials are valid or not
+    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+        if ($row['username'] == $username) {
+            return "Username taken";
+        } else if ($row['email'] == $email) {
+            return "Email is in use";
+        }
+    }
+    //main database enrty
+    $tsql = "INSERT INTO dbo.allUsersInfo (username,orignalName,email,passkey,tableName,followers,followings,likedPosts,totalComments,userPosts,profilePhoto,coverPhoto,location)
                VALUES ('$username', '$name', '$email','$password','-','0','0','0','0','0','css/images/profile_picture.png','css/images/cover.png','Blue Planet')";
-       $getResults= sqlsrv_query($conn, $tsql);
-       if ($getResults == FALSE){
-          echo ("<script>alert('Some Error occured');</script>");
-          return "exit";
-       }
-   
-       
-       $arrSubs=array("Followers"=>array(),"Following"=>array(),"Connections"=>array(),"ReceivedConnections"=>array(),"sentConnections"=>array(),"LikedPosts"=>array(),"UserPosts"=>array());
-       $json_obf=file_get_contents("networksJSON.json");
-       $data=json_decode($json_obf,true);
-       //$arr=array($username=>$arrSubs);
-       //array_push($data,$arr);
-       $data[$username]=$arrSubs;
-       $json_object = json_encode($data);
-       file_put_contents('networksJSON.json', $json_object);  
-   
-       
-       $usernameGlobal=$username;
-       setcookie('statusUsername',$username,time() + (86400 * 30),'/','sqltry3.azurewebsites.net');
-       
-       return "OK";
-       }
-       
-       
-       
-       
-       
-     function displaylogiin(){ 
-         $username=$_POST['usernameLogin'];
-         $password=$_POST['passwordLogin'];
-   
-         //echo "<script>alert('$username'+' '+' $password');</script>";
-   
-         $serverName = "xxxxxxxxxxx";
-         $connectionOptions = array("Database" => "xxxxxxxxxx", 
-             "Uid" => "xxxxxxxxx", 
-             "PWD" => "xxxxxxxxxxxx");
-         $conn = sqlsrv_connect($serverName, $connectionOptions) or die( print_r( sqlsrv_errors(), true));
-         $tsql= "SELECT * FROM dbo.allUsersInfo";
-         $getResults= sqlsrv_query($conn, $tsql);
-         if ($getResults == FALSE){
-           print_r(sqlsrv_errors());
-           echo "errororo";
-            echo ("<script>alert('Some Error occured');</script>");
-            return "exit";
-         }
-         //checking if the credentials are valid or not for user login
-         while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)){
-            if(($row['username']==$username || $row['email']==$username) && $row['passkey']==$password){
-                 $usernameGlobal=$row['username'];
-                 setcookie('statusUsername',$row['username'],time() + (86400 * 30),'/','sqltry3.azurewebsites.net');
-                 return "userValid";
-            }
-         }
-   //echo "errororo";
-         return "userInvalid";
-     }
-   
-     if(isset($_POST['signup'])){
-       $res=displaySignup();
-       if($res=="exit"){exit();}
-       else if($res=="Username taken"){
-           echo("
+    $getResults = sqlsrv_query($conn, $tsql);
+    if ($getResults == FALSE) {
+        echo ("<script>alert('Some Error occured');</script>");
+        return "exit";
+    }
+    $arrSubs = array("Followers" => array(), "Following" => array(), "Connections" => array(), "ReceivedConnections" => array(), "sentConnections" => array(), "LikedPosts" => array(), "UserPosts" => array());
+    $json_obf = file_get_contents("networksJSON.json");
+    $data = json_decode($json_obf, true);
+    //$arr=array($username=>$arrSubs);
+    //array_push($data,$arr);
+    $data[$username] = $arrSubs;
+    $json_object = json_encode($data);
+    file_put_contents('networksJSON.json', $json_object);
+    $usernameGlobal = $username;
+    setcookie('statusUsername', $username, time() + (86400 * 30), '/', 'sqltry3.azurewebsites.net');
+    return "OK";
+}
+function displaylogiin() {
+    $username = $_POST['usernameLogin'];
+    $password = $_POST['passwordLogin'];
+    //echo "<script>alert('$username'+' '+' $password');</script>";
+    $serverName = "xxxxxxxxxxx";
+    $connectionOptions = array("Database" => "xxxxxxxxxx", "Uid" => "xxxxxxxxx", "PWD" => "xxxxxxxxxxxx");
+    $conn = sqlsrv_connect($serverName, $connectionOptions) or die(print_r(sqlsrv_errors(), true));
+    $tsql = "SELECT * FROM dbo.allUsersInfo";
+    $getResults = sqlsrv_query($conn, $tsql);
+    if ($getResults == FALSE) {
+        print_r(sqlsrv_errors());
+        echo "errororo";
+        echo ("<script>alert('Some Error occured');</script>");
+        return "exit";
+    }
+    //checking if the credentials are valid or not for user login
+    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+        if (($row['username'] == $username || $row['email'] == $username) && $row['passkey'] == $password) {
+            $usernameGlobal = $row['username'];
+            setcookie('statusUsername', $row['username'], time() + (86400 * 30), '/', 'sqltry3.azurewebsites.net');
+            return "userValid";
+        }
+    }
+    //echo "errororo";
+    return "userInvalid";
+}
+if (isset($_POST['signup'])) {
+    $res = displaySignup();
+    if ($res == "exit") {
+        exit();
+    } else if ($res == "Username taken") {
+        echo ("
              <script>
              window.onload=function(){
                document.getElementById('signupButton').click();
@@ -129,9 +102,8 @@
              }
              
              </script>");
-       }
-       else if($res=="Email is in use"){
-         echo("
+    } else if ($res == "Email is in use") {
+        echo ("
              <script>
              window.onload=function(){
                document.getElementById('signupButton').click();
@@ -139,44 +111,35 @@
              }
              
              </script>");
-       }
-       else{
-         echo("
+    } else {
+        echo ("
              <script>
              window.onload=function(){
                document.getElementById('signupButton').click();
                document.getElementById('error').innerHTML='Acc created sucessfully';
              }
              </script>");
-   
-       //cookie works-- and redirect for the demno page
-   
-         //setcookie('status','1');
-         setcookie('status',"1",time() + (86400 * 30),'/','sqltry3.azurewebsites.net');
-         
-         
-         echo("
+        //cookie works-- and redirect for the demno page
+        //setcookie('status','1');
+        setcookie('status', "1", time() + (86400 * 30), '/', 'sqltry3.azurewebsites.net');
+        echo ("
              <script>
              window.location.href = 'https://sqltry3.azurewebsites.net/uploads/loginsignup/profile.php';
              </script>");
-       }
-   
-     }
-   
-     if(isset($_POST['login'])){
-       $resFromLogin=displaylogiin();
-      // echo "<script>alert('$resFromLogin');</script>";
-       if($resFromLogin=="userValid"){
-         setcookie('status',"1",time() + (86400 * 30),'/','sqltry3.azurewebsites.net');
-         //setcookie('statusUsername',$usernameGlobal,time() + (86400 * 30),'/','sqltry3.azurewebsites.net');
-   
-         echo("
+    }
+}
+if (isset($_POST['login'])) {
+    $resFromLogin = displaylogiin();
+    // echo "<script>alert('$resFromLogin');</script>";
+    if ($resFromLogin == "userValid") {
+        setcookie('status', "1", time() + (86400 * 30), '/', 'sqltry3.azurewebsites.net');
+        //setcookie('statusUsername',$usernameGlobal,time() + (86400 * 30),'/','sqltry3.azurewebsites.net');
+        echo ("
              <script>
              window.location.href = 'https://sqltry3.azurewebsites.net/uploads/loginsignup/profile.php';
              </script>");
-       }
-       else{
-         echo("
+    } else {
+        echo ("
              <script>
              window.onload=function(){
              
@@ -184,11 +147,9 @@
              }
             
              </script>");
-       }
-     }
-   
-   
-   ?>
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
    <head>
