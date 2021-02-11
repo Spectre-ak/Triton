@@ -20,7 +20,7 @@ if (!$getResults) {
 $row = sqlsrv_fetch_array($getResults);
 $profile = $row['profilePhoto'];
 $name = $row['orignalName'];
-echo ("
+echo (" 
 		<script>
 		var thisUserName='$username';
 		var thisUserProfileLink='$profile';
