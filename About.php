@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head>
+<head></head>
    <link rel="shortcut icon" href="css/images/logo.png" />
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
    <title>About Us</title>
@@ -40,7 +40,7 @@
       }
       }   
    </style>
-</head>
+
 <body>
    <h1>Triton</h1>
    <div class="container">
