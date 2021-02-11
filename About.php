@@ -53,7 +53,7 @@
             <li>    <i class="fab fa-css3-alt" ></i>&nbsp&nbsp&nbspCSS  </li>
             <li>    <i class="fab fa-js" style="color: #e9ca32;"> </i>&nbsp&nbsp Java Script</li>
             <li>    <i class="fab fa-php"></i> &nbsp&nbsp  PHP  </li>
-            <li>    <img class="jq" src="css/images/bootstrap.png"> &nbsp Bootstrap </li>
+            <li>    <img class="jq" src="css/images/bootstrap.png"/> &nbsp Bootstrap </li>
             <li>    <img class="jq" src="css/images/image.png"/>  jQuery    </li>
             <li>    <img class="jq" src="css/images/firebase.png"/>  Firebase   </li>
          </ul>
