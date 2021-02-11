@@ -21,7 +21,7 @@
 4. Users profile
 
 
-#### Followers/Connections/Request
+#### Followers/Connections/Requests
 1. For maintaining the network such as liked posts, connections, requests A JSON file is used where each user is present as a object.
-2. A separate JSON file is used for all users posts and this is used in feed page.
+2. A separate JSON file is used for all users posts which provides content in feed page.
 
