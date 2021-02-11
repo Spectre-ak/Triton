@@ -31,7 +31,7 @@ $data_posts = json_decode($json_obf_posts, true);
 $arrrayLikes = array();
 foreach ($data_posts as $key => $value) {
     $arrrayLikes[$key] = $value['likes'];
-}
+} 
 arsort($arrrayLikes);
 foreach ($arrrayLikes as $key => $value) {
     $user = $data_posts[$key]["user"];
