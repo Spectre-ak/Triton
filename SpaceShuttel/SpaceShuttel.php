@@ -613,7 +613,7 @@
         	 
 
 
-        	var apiArray=["gtiZgqXuP8f3OPyjqu21ysauFO8mCOyDPjRKwhJq","HQv9ho1mQR9um5vu34dEhP5lsedm95MEYOz3rfBh","W9OdIjEe1fWDQYstoh8lHgf1GtHKBAdbkS1VzcQ5","5B6oJsSCQyekXZvNOKpsUhRPl1e7FHqjIAyHpybk"];
+        	var apiArray=["gt","HQvfBh","WcQ5","5B6"];
 
         	function getRandomInt(min, max) {
 		        min = Math.ceil(min);
