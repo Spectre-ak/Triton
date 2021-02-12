@@ -5,26 +5,21 @@ if ($_COOKIE['status'] == '1') {
     $serverName = "xxxxxxxxxxx";
     $connectionOptions = array("Database" => "xxxxxxxxxxxx", "Uid" => "xxxxxxxxxxxxx", "PWD" => "xxxxxxxxxxxxxxxxx");
     $conn = sqlsrv_connect($serverName, $connectionOptions) or die(print_r(sqlsrv_errors(), true));
-    $tsql = "SELECT * FROM dbo.allUsersInfo";
+    $tsql= "SELECT orignalName,profilePhoto,coverPhoto,location FROM dbo.allUsersInfo WHERE username='$username'";
     $getResults = sqlsrv_query($conn, $tsql);
     if ($getResults == FALSE) {
         echo ("<script>alert('Some Error occured while profile loading');</script>");
         exit();
     }
-    ///$tableName="";
     $name = "";
     $location = "";
     $profile_picture_link = "";
     $cover_photo_link = "";
-    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-        if ($row['username'] == $username || $row['email'] == $username) {
-            $name = $row['orignalName'];
-            $profile_picture_link = $row['profilePhoto'];
-            $cover_photo_link = $row['coverPhoto'];
-            $location = $row['location'];
-            break;
-        }
-    }
+    $row = sqlsrv_fetch_array($getResults);	
+    $name = $row['orignalName'];
+    $profile_picture_link = $row['profilePhoto'];
+    $cover_photo_link = $row['coverPhoto'];
+    $location = $row['location'];
     echo ("
             <script>
                 window.onload=function(){
@@ -51,26 +46,21 @@ function loadAgain() {
     $serverName = "xxxxxxxxxxx";
     $connectionOptions = array("Database" => "xxxxxxxxxxxx", "Uid" => "xxxxxxxxxxxxx", "PWD" => "xxxxxxxxxxxxxxxxx");
     $conn = sqlsrv_connect($serverName, $connectionOptions) or die(print_r(sqlsrv_errors(), true));
-    $tsql = "SELECT * FROM dbo.allUsersInfo";
+    $tsql= "SELECT orignalName,profilePhoto,coverPhoto,location FROM dbo.allUsersInfo WHERE username='$username'";
     $getResults = sqlsrv_query($conn, $tsql);
     if ($getResults == FALSE) {
         echo ("<script>alert('Some Error occured while profile loading');</script>");
         exit();
     }
-    ///$tableName="";
     $name = "";
     $location = "";
     $profile_picture_link = "";
     $cover_photo_link = "";
-    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-        if ($row['username'] == $username || $row['email'] == $username) {
-            $name = $row['orignalName'];
-            $profile_picture_link = $row['profilePhoto'];
-            $cover_photo_link = $row['coverPhoto'];
-            $location = $row['location'];
-            break;
-        }
-    }
+    $row = sqlsrv_fetch_array($getResults);	
+    $name = $row['orignalName'];
+    $profile_picture_link = $row['profilePhoto'];
+    $cover_photo_link = $row['coverPhoto'];
+    $location = $row['location'];
     echo ("
             <script>
                 window.onload=function(){
@@ -133,88 +123,6 @@ if (isset($_POST["submit"])) {
         } else {
             $statusMsg = "Image compress failed!";
         }
-    }
-    if (isset($_POST["submitProfilePic"])) {
-        if ($_FILES["fileToUploadprofile"]["size"] > 5000000) {
-            echo "<script>alert('File too large');</script>";
-            exit();
-        }
-        if ($_FILES["fileToUploadprofile"]["size"] == 0) {
-            echo "<script>alert('Empty File');</script>";
-            echo ("
-            <script>
-            window.location.href = 'https://sqltry3.azurewebsites.net/uploads/loginsignup/update.php';
-            </script>");
-        }
-        // $table=$_COOKIE['statusUserTable'];
-        //$table=strval($table);
-        $username = $_COOKIE['statusUsername'];
-        $target_dir = "uploads/" . $username . "pro";
-        $target_file = $target_dir . basename($_FILES["fileToUploadprofile"]["name"]);
-        echo ("<script>alert('$target_file');</script>");
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        echo ("<script>alert('sd');</script>");
-        $imgTemp = $_FILES["fileToUploadprofile"]["tmp_name"];
-        $ext = pathinfo($_FILES["fileToUploadprofile"]["name"], PATHINFO_EXTENSION);
-        //echo $ext;
-        $serverName = "xxxxxxxxxxx";
-        $connectionOptions = array("Database" => "xxxxxxxxxxxx", "Uid" => "xxxxxxxxxxxxx", "PWD" => "xxxxxxxxxxxxxxxxx");
-        $conn = sqlsrv_connect($serverName, $connectionOptions) or die(print_r(sqlsrv_errors(), true));
-        $tsql = "SELECT * FROM dbo.allUsersInfo";
-        $getResults = sqlsrv_query($conn, $tsql);
-        if ($getResults == FALSE) {
-            echo ("<script>alert('Some Error occured while profile loading');</script>");
-            exit();
-        }
-        ///$tableName="";
-        while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-            if ($row['username'] == $username || $row['email'] == $username) {
-                if ($row['profilePhoto'] != 'css/images/profile_picture.png') {
-                    $imgOld = $row['profilePhoto'];
-                    echo ("<script>alert('$imgOld');</script>");
-                    unlink($imgOld);
-                }
-                break;
-            }
-        }
-        if ($ext == 'PNG' || $ext == 'png') {
-            if (move_uploaded_file($_FILES["fileToUploadprofile"]["tmp_name"], $target_file)) {
-                //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUploadprofile"]["name"])). " has been uploaded.";
-                
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        } else {
-            $im = imagecreatefromjpeg($imgTemp);
-            $size = min(imagesx($im), imagesy($im));
-            $im2 = imagecrop($im, ['x' => 100, 'y' => 100, 'width' => $size / 2, 'height' => $size / 2]);
-            $fie = "uploads/imgg.jpg";
-            $var = move_uploaded_file($im2, $fie);
-            if ($im2 !== FALSE) {
-                imagejpeg($im2, 'example-cropped.jpg');
-                //imagedestroy($im2);
-                echo ("<script>alert('asd');</script>");
-            }
-            $compressedImage = compressImage($imgTemp, $target_file, 40);
-            if ($compressedImage) {
-                $status = 'success';
-                $statusMsg = "Image compressed successfully.";
-                //echo $status;
-                
-            } else {
-                $statusMsg = "Image compress failed!";
-                echo ("<script>alert('Some Error occured while profile loading');</script>");
-                exit();
-            }
-        }
-        $sql = "UPDATE dbo.allUsersInfo SET profilePhoto='$target_file' WHERE username='$username' ";
-        $getResults = sqlsrv_query($conn, $sql);
-        if ($getResults == FALSE) {
-            echo ("<script>alert('Some Error occured while updating table name');</script>");
-            return "exit";
-        }
-        loadAgain();
     }
     if (isset($_POST["submitCoverPic"])) {
         if ($_FILES["fileToUploadCover"]["size"] > 5000000) {
@@ -388,7 +296,4 @@ if (isset($_POST["submit"])) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
-
