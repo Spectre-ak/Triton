@@ -5,7 +5,7 @@ if ($_COOKIE['status'] == '1') {
     $serverName = "xxxxxxxxxxx";
     $connectionOptions = array("Database" => "xxxxxxxxxxxx", "Uid" => "xxxxxxxxxxxxx", "PWD" => "xxxxxxxxxxxxxxxxx");
     $conn = sqlsrv_connect($serverName, $connectionOptions) or die(print_r(sqlsrv_errors(), true));
-    $tsql = "SELECT * FROM dbo.allUsersInfo";
+    $tsql= "SELECT orignalName,profilePhoto,coverPhoto,location FROM dbo.allUsersInfo WHERE username='$username'";
     $getResults = sqlsrv_query($conn, $tsql);
     if ($getResults == FALSE) {
         echo ("<script>alert('Some Error occured while profile loading');</script>");
@@ -15,27 +15,22 @@ if ($_COOKIE['status'] == '1') {
     $location = "";
     $profile_picture_link = "";
     $cover_photo_link = "";
-    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-        if ($row['username'] == $username || $row['email'] == $username) {
-            $name = $row['orignalName'];
-            $profile_picture_link = $row['profilePhoto'];
-            $cover_photo_link = $row['coverPhoto'];
-            $location = $row['location'];
-            break;
-        }
-    }
+    $row = sqlsrv_fetch_array($getResults);	
+    $name = $row['orignalName'];
+    $profile_picture_link = $row['profilePhoto'];
+    $cover_photo_link = $row['coverPhoto'];
+    $location = $row['location'];
     echo ("
-            <script>
-              window.onload=function(){
-               document.getElementById('uploaded_image').src='$profile_picture_link';
-                
-               }
-            </script>");
+	<script>
+	window.onload=function(){
+	document.getElementById('uploaded_image').src='$profile_picture_link';
+	}
+	</script>");
 } else {
     echo ("
-            <script>
-            window.location.href = 'https://sqltry3.azurewebsites.net/uploads/loginsignup/login.php';
-            </script>");
+	<script>
+	window.location.href = 'https://sqltry3.azurewebsites.net/uploads/loginsignup/login.php';
+	</script>");
 }
 ?>
 
