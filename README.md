@@ -35,4 +35,5 @@
 2. Chat history is loaded once and each current chat gets addded on the history database for both the user
 3. Real-time messaging uses different databases and gets removed after each received message
 4. Status(online/offline) -Each user keeps updating status(current time) on the firebase database using setinterval() for a particular chat
+
 Note:- Messaging is not encrypted yet.
