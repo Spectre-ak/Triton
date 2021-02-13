@@ -16,8 +16,8 @@
 ##### The web app will be available on Azure and cpanel with separate databases.
 
 #### Different Sections of application and their names.
-1. Feed/home page aka SpaceShuttel is here.
-2. All users page aka Astronauts.
+1. Feed/home page aka SpaceShuttel
+2. All users page aka Astronauts
 3. Messaging as Radio
 4. Users profile
 
