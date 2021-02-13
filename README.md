@@ -32,7 +32,7 @@
 
 #### Messaging
 1. Messaging is only available for connections, so users must be connected to chat [->](https://github.com/Spectre-ak/Triton/blob/main/radio/Radio.php)
-2. Chat history is loaded once and each current chat gets addded on the history database for both the user
+2. Chat history is loaded once and each current chat gets added on the history database for both the user
 3. Real-time messaging uses different databases and gets removed after each received message
 4. Status(online/offline) -Each user keeps updating status(current time) on the firebase database using setinterval() for a particular chat
 
