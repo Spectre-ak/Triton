@@ -26,6 +26,5 @@
 1. For maintaining the network such as liked posts, connections, requests A JSON file is used where each user is present as a object.
 2. A separate JSON file is used for all users posts which provides content in feed page.
 
-##### Feed page logic
-###### 1. First all posts sorted by the likes is displayed.
-###### 2. Rest of the content is from NASA image APIs.
+#### Feed page logic
+1. First all the posts sorted by the likes is displayed then the user can keep scrolling through the NASA images APIs
