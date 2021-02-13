@@ -36,4 +36,4 @@
 3. Real-time messaging uses different databases and gets removed after each received message
 4. Status(online/offline) -Each user keeps updating status(current time) on the firebase database using setinterval() for a particular chat
 
-Note:- Messaging is not encrypted yet.
+Note:- Messages are not encrypted yet.
