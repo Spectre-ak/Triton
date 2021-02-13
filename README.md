@@ -27,4 +27,12 @@
 2. A separate JSON file is used for all users posts which provides content in feed page.
 
 #### Feed page logic
-1. First all the posts sorted by the likes is displayed then the user can keep scrolling through the NASA images APIs
+1. First all the posts sorted by the likes is displayed then the user can keep scrolling through the NASA images APIs [->](https://github.com/Spectre-ak/Triton/blob/main/SpaceShuttel/SpaceShuttel.php)
+
+
+#### Messaging
+1. Messaging is only available for connections, so users must be connected to chat [->](https://github.com/Spectre-ak/Triton/blob/main/radio/Radio.php)
+2. Chat history is loaded once and each current chat gets addded on the history database for both the user
+3. Real-time messaging uses different databases and gets removed after each received message
+4. Status(online/offline) -Each user keeps updating status(current time) on the firebase database using setinterval() for a particular chat
+Note:- Messaging is not encrypted yet.
