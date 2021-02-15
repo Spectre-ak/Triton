@@ -28,6 +28,7 @@
 
 #### Feed page logic
 1. First all the posts sorted by the likes is displayed then the user can keep scrolling through the NASA images APIs [->](https://github.com/Spectre-ak/Triton/blob/main/SpaceShuttel/SpaceShuttel.php)
+2. Provided a search functionality using topic and description through the nasa images library [->](https://github.com/Spectre-ak/Triton/tree/main/SpaceShuttel/nasa-image)
 
 
 #### Messaging
