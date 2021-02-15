@@ -27,7 +27,7 @@
 2. A separate JSON file is used for all users posts which provides content in feed page.
 
 #### Feed page logic
-1. All posts are sorted by the likes is displayed first then the user can keep scrolling through the NASA images APIs [->](https://github.com/Spectre-ak/Triton/blob/main/SpaceShuttel/SpaceShuttel.php)
+1. All posts are sorted by the likes is displayed first then the user can keep scrolling through NASA images APIs[->](https://github.com/Spectre-ak/Triton/blob/main/SpaceShuttel/SpaceShuttel.php)
 2. Provided a search functionality using topic and description through the nasa images library [->](https://github.com/Spectre-ak/Triton/tree/main/SpaceShuttel/nasa-image)
 
 
