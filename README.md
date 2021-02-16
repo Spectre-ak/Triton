@@ -26,7 +26,7 @@
 1. For maintaining the network such as liked posts, connections, requests A JSON file is used where each user is present as a object.
 2. A separate JSON file is used for all users posts which provides content in feed page.
 
-#### Feed page logic
+#### Feed page contents
 1. All posts sorted by the likes is displayed first then the user can keep scrolling through NASA's image APIs[->](https://github.com/Spectre-ak/Triton/blob/main/SpaceShuttel/SpaceShuttel.php)
 2. Provided a search functionality using topic or description in the NASA's image library on feed page[->](https://github.com/Spectre-ak/Triton/tree/main/SpaceShuttel/nasa-image)
 
