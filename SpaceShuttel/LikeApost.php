@@ -25,8 +25,8 @@ function LikeThisPost($imageTobeLiked, $usernameOfThePost) {
         file_put_contents('networksJSON.json', $json_object);
         $prevLiked = $data_posts[$imageTobeLiked]["likes"];
         $prevLiked++;
-        $data_posts[$imageTobeLiked] = array("likes" => $prevLiked, "title" => $_POST['title'], "desc" => $_POST['desc'], "user" => $usernameOfThePost);
-        $json_object1 = json_encode($data_posts);
+        $data_posts[$imageTobeLiked]=array("likes"=>$prevLiked,"title"=>$_POST['title'],"desc"=>$_POST['desc'],"user"=>$usernameOfThePost,"date"=>$_POST['date']); 
+	$json_object1 = json_encode($data_posts);
         file_put_contents('networkPosts.json', $json_object1);
         echo $username . " " . $imageTobeLiked . " ";
     }
