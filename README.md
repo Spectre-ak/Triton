@@ -29,7 +29,8 @@
 #### Feed page contents
 1. Latest posts are displayed first then the user can keep scrolling through NASA's image APIs[->](https://github.com/Spectre-ak/Triton/blob/main/SpaceShuttel/SpaceShuttel.php)
 2. Provided a search functionality using topic or description in the NASA's image library on feed page[->](https://github.com/Spectre-ak/Triton/tree/main/SpaceShuttel/nasa-image)
-
+3. Real time ISS location
+4. NASA's Mars rovers images 
 
 #### Messaging
 1. Messaging is only available for connections, so users must be connected to chat [->](https://github.com/Spectre-ak/Triton/blob/main/radio/Radio.php)
