@@ -30,7 +30,7 @@ $json_obf_posts = file_get_contents("networkPosts.json");
 $data_posts = json_decode($json_obf_posts, true);
 $arrrayLikes = array();
 foreach ($data_posts as $key => $value) {
-    $arrrayLikes[$key] = $value['likes'];
+    $arrrayLikes[$key]=$value['date'];
 } 
 arsort($arrrayLikes);
 foreach ($arrrayLikes as $key => $value) {
@@ -266,6 +266,7 @@ function showUsersPost(usernamePost, name, profile, image, titleText, descText, 
 					fd.append('file', files);
 					fd.append('title', document.getElementById("titleDisplay").innerHTML);
 					fd.append('desc', document.getElementById("descDisplay").innerHTML);
+					fd.append('date',Date.now());  
 					$.ajax({
 						url: 'SpaceShuttelUploadingPostScript.php',
 						type: 'post',
@@ -351,6 +352,8 @@ function showUsersPost(usernamePost, name, profile, image, titleText, descText, 
 					fd.append('title', postObject['title']);
 					fd.append('desc', postObject['desc']);
 					fd.append('usernameOfThePost', usernameOfThePost);
+					fd.append('date',Date.now());  
+
 					$.ajax({
 						url: 'LikeApost.php',
 						type: 'post',
@@ -490,6 +493,8 @@ function showUsersPost(usernamePost, name, profile, image, titleText, descText, 
 				fd.append('image', postObject['image']);
 				fd.append('title', postObject['title']);
 				fd.append('desc', postObject['desc']);
+				fd.append('date',Date.now());  
+
 				$.ajax({
 					url: 'LikeAPIPost.php',
 					type: 'post',
