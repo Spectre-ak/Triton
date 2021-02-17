@@ -43,9 +43,10 @@ function displaySignup() {
             return "Email is in use";
         }
     }
+    $passHashed=password_hash($password, PASSWORD_DEFAULT);
     //main database enrty
     $tsql = "INSERT INTO dbo.allUsersInfo (username,orignalName,email,passkey,tableName,followers,followings,likedPosts,totalComments,userPosts,profilePhoto,coverPhoto,location)
-               VALUES ('$username', '$name', '$email','$password','-','0','0','0','0','0','css/images/profile_picture.png','css/images/cover.png','Blue Planet')";
+               VALUES ('$username', '$name', '$email','$passHashed','-','0','0','0','0','0','css/images/profile_picture.png','css/images/cover.png','Blue Planet')";
     $getResults = sqlsrv_query($conn, $tsql);
     if ($getResults == FALSE) {
         echo ("<script>alert('Some Error occured');</script>");
@@ -80,7 +81,7 @@ function displaylogiin() {
     }
     //checking if the credentials are valid or not for user login
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-        if (($row['username'] == $username || $row['email'] == $username) && $row['passkey'] == $password) {
+        if (($row['username'] == $username || $row['email'] == $username) && && password_verify($password, $row['passkey'])  ) {
             $usernameGlobal = $row['username'];
             setcookie('statusUsername', $row['username'], time() + (86400 * 30), '/', 'sqltry3.azurewebsites.net');
             return "userValid";
