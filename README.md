@@ -1,6 +1,6 @@
 # Triton
 
-#### The beta version is deployed at https://sqltry3.azurewebsites.net/uploads/loginsignup/login.php
+#### The beta version is deployed at https://triton.azurewebsites.net/
 ##### cpanel link http://triton.byethost7.com
 
 #### A social media network for space enthusiast.
