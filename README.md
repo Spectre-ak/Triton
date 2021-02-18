@@ -1,7 +1,8 @@
 # Triton
 
-#### The beta version is deployed at azure https://triton.azurewebsites.net/
-##### and cpanel http://triton.byethost7.com
+#### The beta version is deployed on azure and cpanel
+##### azure https://triton.azurewebsites.net/
+##### cpanel http://triton.byethost7.com
 
 #### A social media network for space enthusiast.
 #### The web app is written in PHP and currently uses Azure SQL Database.
