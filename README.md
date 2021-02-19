@@ -14,7 +14,7 @@
 4. Uploading posts and giving likes
 5. NASA Image APIs content in the feed page.
 
-##### The web app will be available on Azure and cpanel with separate databases.
+##### The web app is available on Azure app service and cpanel with separate databases.
 
 #### Different Sections of application and their names.
 1. Feed/home page aka SpaceShuttel
