@@ -6,7 +6,7 @@
 		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 		<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
 		<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
-<link rel="shortcut icon" href="./logo.png" />  
+<link rel="shortcut icon" href="logo.png" />   
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 		<style>
@@ -81,11 +81,26 @@
 				request.onload = function () {
 				if (this.status >= 200 && this.status < 400) {
 					var json = JSON.parse(this.response);
-				document.getElementById("latitude").textContent=json.latitude;
-				document.getElementById("longitude").textContent=json.longitude;
-				document.getElementById("altitude").textContent=json.altitude;
-				document.getElementById("velocity").textContent=json.velocity;
-				document.getElementById("visibility").textContent=json.visibility;
+					var lat,lon,alt,vel,vis;
+					var la,lo,al,ve;
+					la=json.latitude;
+					lat=la.toFixed(2) + "°";
+					lo=json.longitude;
+					lon=lo.toFixed(2) + "°";
+					al=json.altitude;
+					alt=al.toFixed(2) + " km";
+					ve=json.velocity;
+					vel=ve.toFixed(2) + " km/h";      
+					vis=json.visibility;
+					
+					var newVelocity1=vel.substring(0,2);
+					var newVelocity2=vel.substring(2,vel.length);
+					
+					document.getElementById("latitude").textContent=lat;
+					document.getElementById("longitude").textContent=lon;
+					document.getElementById("altitude").textContent=alt;
+					document.getElementById("velocity").textContent=newVelocity1+","+newVelocity2; 
+					document.getElementById("visibility").textContent=vis;
 					map.flyTo({
 						center: [json.longitude,json.latitude],
 						speed: 0.5
