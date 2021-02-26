@@ -1,11 +1,11 @@
 # Triton
 
-#### The beta version is deployed on azure and cpanel
+#### The beta version is deployed on azure and cpanel but login/signup is only available on cpanel and on azure users can use APIs freely.
 ##### azure https://triton.azurewebsites.net/
 ##### cpanel http://triton.byethost7.com
 
 #### A social media network for space enthusiast.
-#### The web app is written in PHP and currently uses Azure SQL Database.
+#### The web app is written in PHP and currently uses SQL Database.
 
 #### Features available currently in the app are:
 1. Profile/Cover image support
