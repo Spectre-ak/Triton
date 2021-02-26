@@ -40,3 +40,9 @@
 4. Status(online/offline) -Each user keeps updating status(current time) on the firebase database using setinterval() for a particular chat
 
 Note:- Messages are not encrypted yet.
+
+#### NASA's Mars Rover Photos [->](https://triton.azurewebsites.net/nasaMars/)
+#### ISS Location [->](https://triton.azurewebsites.net/issLocation/)  
+
+
+
