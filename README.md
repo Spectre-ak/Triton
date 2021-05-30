@@ -1,5 +1,8 @@
 # Triton
 
+#### React based implementation is here https://github.com/Spectre-ak/triton-one
+
+
 #### The beta version is deployed on azure and cpanel but login/signup is only available on cpanel and on azure users can only use APIs.
 ##### azure https://triton.azurewebsites.net/
 ##### cpanel http://triton.byethost7.com
